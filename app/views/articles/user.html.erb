@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="large-11 large-centered columns">
+	
+	<% @articles.each do |a| %>
+		<div class="row">
+			<div class="large-12 columns">
+				<h2>
+					<%= a.title %>
+				</h2>
+				<br/>
+					<%= a.text %>
+			</div>
+			<div class="large-12 columns">
+				<br/>
+			</div>
+		</div>
+		<%= link_to 'Подробнее', article_path(a.id) %>
+	<% end %>
+	
+	</div>
+</div>

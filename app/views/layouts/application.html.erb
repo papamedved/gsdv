@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="topbarlogo" class="top-bar" data-topbar role="navigation">
+      <section class="top-bar-section">
+        <div class="logo-wrapper hide-for-small-only">
+          <div class="logo">
+            <object type="image/png" data="/assets/logo.svg.png" width="130" height="130"></object>
+          </div>
+        </div>
+        <div class="right">
+          <% if user_signed_in? %>
+            <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Войти', new_user_session_path %>
+            <%= link_to 'Регистрация', new_user_registration_path %>
+          <% end %>
+        </div>
+      </section>
+    </div>
+
+    <div class="top-bar" data-topbar role="navigation">
+      <section class="top-bar-section">
+        <div class="logo-wrapper hide-for-small-only">
+          <div class="name">
+            <div>ГЕНЕРАЛЬНЫЙ ШТАБ</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <nav id="menubar" class="top-bar" data-topbar role="navigation">
+      <section id="menusection" class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><%= link_to 'Лента', root_path %></li>
+        </ul>
+        <ul class="left">
+          <li><a href="#">Left Nav Button</a></li>
+        </ul>
+        <ul class="left">
+          <li><a href="#">Left Nav Button</a></li>
+        </ul>
+        <ul class="left">
+          <li><%= link_to 'Мои статьи', articles_user_path %></li>
+        </ul>
+        <ul class="left">
+          <li><%= link_to 'Новая статья', new_article_path %></li>
+        </ul>
+      </section>
+    </nav>
+
+    <br/>
+    <div class="row">
+      <hr>
+      <%= yield %>
+      <hr>
+    </div>
+  </body>
+</html>

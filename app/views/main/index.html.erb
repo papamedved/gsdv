@@ -1,0 +1,15 @@
+<div class="medium-20 columns">
+  <ul class="medium-block-grid-1 large-block-grid-2">
+  	<% @all_articles.each do |aa| %>
+      <li>
+        <div class="divborder">
+            <h3>
+             <%= aa.title  %>
+            </h3>
+  			     <%= aa.text  %>
+             <%= link_to 'Подробнее', article_path(aa.id) %>
+  		  </div>
+      </li>
+  	<% end %>
+  </ul>
+</div>
